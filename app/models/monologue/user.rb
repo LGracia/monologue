@@ -13,21 +13,4 @@ class Monologue::User < ActiveRecord::Base
     return false if user.posts.any?
     true
   end
-
-  def method_missing method, *args, &block
-    puts "LOOKING FOR ROUTES #{method}"
-    if main_app.respond_to?(method)
-      main_app.send(method, *args)
-    else
-      super
-    end
-  end
-
-  def respond_to?(method)
-    if main_app.respond_to?(method)
-      true
-    else
-      super
-    end
-  end
 end
