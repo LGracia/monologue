@@ -1,9 +1,10 @@
 class Monologue::Admin::PostsController < Monologue::Admin::BaseController
   respond_to :html
   before_filter :load_post, only: [:edit, :update]
-  
+
   def index
     @posts = Monologue::Post.default
+    puts "<<<<<<<<<<<#{@posts.inspect}"
   end
 
   def new
