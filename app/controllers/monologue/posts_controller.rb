@@ -1,4 +1,5 @@
 class Monologue::PostsController < Monologue::ApplicationController
+  skip_before_filter :authenticate_user!, only: [:show, :index]
   def index
     @page = params[:page].nil? ? 1 : params[:page]
     @posts = Monologue::Post.page(@page).published
